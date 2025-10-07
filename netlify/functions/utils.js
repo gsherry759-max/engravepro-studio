@@ -3,7 +3,8 @@ import path from "path";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-const DATA_PATH = path.resolve("netlify/data/users.json");
+// Correct: resolves to the data folder INSIDE your function directory
+const DATA_PATH = path.join(__dirname, "data/users.json");
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret123";
 
 export const readUsers = () => JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
